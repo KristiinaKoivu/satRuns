@@ -14,7 +14,10 @@ if (!require(Rprebasso)) {
 
 ### Run settings
 source("Rsrc/settings.r")
-
+setwd(generalPath)
+if(!dir.exists("output")) {
+  dir.create("output")
+}
 # source("Rsrc/functions.r")
 
 ###load Processed data
@@ -29,7 +32,7 @@ if(testRun){
 }
 
 
-for (rcpfile in rcps) { ## ---------------------------------------------
+for (rcpfile in weather) { ## ---------------------------------------------
   print(date())
   print(rcpfile)
 

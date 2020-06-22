@@ -1,4 +1,3 @@
-library(Rprebasso)
 
 ####function to initialize the model
 create_prebas_input.f = function(r_no, clim, data.sample, nYears, startingYear=0,domSPrun=0) { # dat = climscendataset
@@ -218,17 +217,18 @@ yasso.mean.climate.f = function(dat, data.sample, startingYear, nYears){
 prep.climate.f = function(dat, data.sample, startingYear, nYears){
   dat = dat[climID %in% data.sample[, unique(climID)]]
   if(weather== "CurrClim"){
-    dat[, Year:= as.numeric(floor(rday/365)+1971)]
+    dat[, Year:= as.numeric(floor((rday-1)/365)+1971)]
     dat1 = dat[Year >= startingYear]
     if(nYears>length(unique(dat1$Year))){
       nSampleYear <- nYears - length(unique(dat1$Year))
       set.seed(123)
       yearX <- sample(1971:min(startingYear,max(dat$Year)),nSampleYear,replace = F)
-      lastYear <- max(dat$Year)
+      lastYear <- max(dat$Year,startingYear)
       newYears <- lastYear + 1:length(yearX)
       dat2 <- dat[Year %in% yearX,]
       dat2$Year <- newYears[match(dat2$Year,yearX)]
       dat <- rbind(dat1,dat2)
+      dat[,DOY:=rep(1:365,nYears),by=climID]
       setorder(dat,climID,Year,DOY)
       dat[,rday:=1:(365*nYears),by=climID]
     }
