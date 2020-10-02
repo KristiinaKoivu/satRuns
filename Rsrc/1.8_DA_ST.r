@@ -36,9 +36,9 @@ uniqueData[,BAsp:= (ba * spruceP/(pineP+spruceP+blp))]
 uniqueData[,BAb:= (ba * blp/(pineP+spruceP+blp))]
 
 dataSurMod <- uniqueData[,.(segID,h,dbh,BAp,BAsp,BAb,siteType1,
-                            siteType2,v2,ba2,h2,dbh2,segID)] 
+                            siteType2,v2,ba2,h2,dbh2)] 
 setnames(dataSurMod,c("segID","H","D","BAp","BAsp","BAb","st1",
-                      "st2","V2","ba2","h2","dbh2","segID"))
+                      "st2","V2","ba2","h2","dbh2"))
 
 
 dataSurMod[,BApPer:=.(BAp/sum(BAp,BAsp,BAb)*100),by=segID]
