@@ -665,7 +665,7 @@ prForUnc <- function(segIDx,nSample,yearUnc,tileX){
   sampleX <- sampleX[H>1.5]
   sampleX <- sampleX[D>0.5]
   sampleX <- sampleX[BAtot>0.045]
-  sampleX[,rootBAp:=BAp^0.5]
+  sampleX[,rootBAp:=sampleError$BAp^0.5]
   sampleX <- sampleX[1:min(nSample,nrow(sampleX))]
   if(nrow(sampleX)<nSample){
     sample1 <- sampleX
