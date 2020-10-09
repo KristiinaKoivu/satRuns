@@ -134,7 +134,7 @@ vNA <- c(65533:65535); vConv <- 1
 hNA <- c(65533:65535); hConv <- 0.1
 pinePerNA <- c(253:255); pinePerConv <- 1
 sprucePerNA <- c(253:255); sprucePerConv <- 1
-siteTypeNA <- c(254:255); siteTypeConv <- 1
+siteTypeNA <- c(253:255); siteTypeConv <- 1
 
 ####settings for sitetype estimation
 stXruns <- TRUE
